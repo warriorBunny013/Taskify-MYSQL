@@ -14,7 +14,7 @@ const Login = () => {
     const Auth = async (e) => {
         e.preventDefault();
         try {
-            await axios.post('http://localhost:5000/api/v1/auth/login', {
+            await axios.post('https://taskify-mysql-backend-uditi.onrender.com/api/v1/auth/login', {
                 email: email,
                 password: password
             });

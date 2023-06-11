@@ -2,7 +2,7 @@ import React from 'react';
 import axios from 'axios';
 
 axios.defaults.withCredentials=true;
-const url = 'http://localhost:5000/api/v1/posts';
+const url = 'https://taskify-mysql-backend-uditi.onrender.com/api/v1/posts';
 export const getTasks= async () => {
     return await axios.get(`${url}`).catch((err)=>console.log(err));
 }

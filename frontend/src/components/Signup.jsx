@@ -14,7 +14,7 @@ const Register = () => {
     const Register = async (e) => {
         e.preventDefault();
         try {
-            await axios.post('http://localhost:5000/api/v1/auth/register', {
+            await axios.post('https://taskify-mysql-backend-uditi.onrender.com/api/v1/auth/register', {
                 name: name,
                 email: email,
                 password: password,

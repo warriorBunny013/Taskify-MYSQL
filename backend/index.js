@@ -4,7 +4,7 @@ const app = express()
 
 require('dotenv').config()
 app.use(cors({
-    origin:["http://localhost:3000"],
+    origin:["https://taskify-mysql-uditi.onrender.com"],
     methods:["POST","GET","PATCH","PUT","DELETE"],
     credentials:true
 }))
