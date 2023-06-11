@@ -64,7 +64,7 @@ const handleSubmitEdit=async()=>{
     const details={title:newtitle,content:newdesc}
     await updateTask(newid,details)
    setNewOpen(false);
-   getAllTasks();
+//    getAllTasks();
 
 }
     return (
