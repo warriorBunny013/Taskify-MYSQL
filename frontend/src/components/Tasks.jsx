@@ -11,7 +11,7 @@ export const getTasks= async () => {
 }
 
 export const addTasks = async (details) => {
-    return await axios.post(`${url}/`, details).catch((err)=>console.log(err));
+    return await axios.post(`${url}`, details).catch((err)=>console.log(err));
 }
 
 export const deleteTask = async (id) => {
