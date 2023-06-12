@@ -15,11 +15,11 @@ export const addTasks = async (details) => {
 }
 
 export const deleteTask = async (id) => {
-    return await axios.delete(`${url}/${id}`).catch((err)=>console.log(err));
+    return await axios.delete(`${url}/delete/${id}`).catch((err)=>console.log(err));
 }
 
 export const updateTask = async (id, details) => {
-    return await axios.put(`${url}/${id}`, details).catch((err)=>console.log(err))
+    return await axios.put(`${url}/update/${id}`, details).catch((err)=>console.log(err))
 }
 const Tasks = () => {
     const [title,setTitle]=React.useState('');
