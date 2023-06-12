@@ -6,6 +6,7 @@ import axios from 'axios';
 axios.defaults.withCredentials=true;
 const url = 'https://taskify-mysql-backend-uditi.onrender.com/api/v1/posts';
 
+
 export const getTasks= async () => {
     return await axios.get(`${url}`).catch((err)=>console.log(err));
 }
@@ -15,11 +16,11 @@ export const addTasks = async (details) => {
 }
 
 export const deleteTask = async (id) => {
-    return await axios.delete(`${url}/${id}`).catch((err)=>console.log(err));
+    return await axios.delete(`${url}/delete/${id}`).catch((err)=>console.log(err));
 }
 
 export const updateTask = async (id, details) => {
-    return await axios.put(`${url}/${id}`, details).catch((err)=>console.log(err))
+    return await axios.put(`${url}/update/${id}`, details).catch((err)=>console.log(err))
 }
 const Tasks = () => {
     const [title,setTitle]=React.useState('');
@@ -70,59 +71,62 @@ const handleSubmitEdit=async(e)=>{
 }
     return (
         <>
-        <div className='main-container'>
-            <div>
-                <h1 style={{fontSize:"1.5rem",margin:"1rem"}}>Welcome..</h1>
-                <button onClick={()=>setOpen(!open)} className='button-create'>Create task</button>
+        <div className='main-containerBox'>
+            <div style={{minWidth:"100%"}}>
+                {/* <h1 style={{fontSize:"1.5rem",margin:"1rem"}}>Welcome..</h1> */}
+                <button onClick={()=>setOpen(!open)} className='button-createBox'>Create task</button>
             </div>
-            <div className='container'>
+            <div className='containerBox'>
                 <table>
+                    <thead>
                     <tr>
                     <th>Task title</th>
                     <th>Description</th>
                     <th></th>
+                    <th></th>
                     </tr>
-
+                    </thead>
+                    <tbody>
                    {tasksdata.map((t)=>{
                     return <tr key={t.id}>
                     <td>{t.title}</td>
                     <td>{t.content}</td>
-                    <td><button onClick={()=>handleDelete(t.id)} style={{paddingInline:"1rem",paddingTop:"0.6rem",paddingBottom:"0.6rem"}}>delete</button></td>
-                    <td><button onClick={()=>handleEdit(t.id,t.title,t.content)} style={{paddingInline:"1rem",paddingTop:"0.6rem",paddingBottom:"0.6rem"}}>Edit</button></td>
+                    <td><button onClick={()=>handleDelete(t.id)} className='button-createBox'>delete</button></td>
+                    <td><button onClick={()=>handleEdit(t.id,t.title,t.content)} className='button-createBox'>Edit</button></td>
                     </tr>
                     }
                  )} 
-                    
+                    </tbody>
                     
                 </table>
             </div>
 
         </div>
         {open &&  <div>
-            <div  style={{ backgroundColor: "rgba(0,0,0,0.5)", position: "fixed",height: "100%", width: "100%", top: 0,left: 0, display: "flex" ,alignItems: "center",justifyContent: "center",overflow: "auto",zIndex: 99999}}>
-            modal
-            <div style={{marginTop:"4rem",width:"30%",backgroundColor:"#fff"}} >
+            <div className='modal-create-box'>
+            <div style={{backgroundColor:"#fff"}} >
                 <form style={{padding:"2rem",display:"flex",flexDirection:"column"}} onSubmit={handleSubmit}>
                 <input type="text" onChange={(e)=>setTitle(e.target.value)} placeholder='title' />
-                <input type="text" onChange={(e)=>setDescription(e.target.value)} placeholder='description' />
+                {/* <input  type="text" onChange={(e)=>setDescription(e.target.value)} placeholder='description' /> */}
+                <textarea style={{resize:"none"}} name="Text1" cols="40" rows="5" onChange={(e)=>setDescription(e.target.value)} placeholder='description' ></textarea>
                 <div style={{display:"flex",gap:"10px",marginTop:"3rem"}}>
-                <button style={{paddingInline:"1rem",paddingTop:"0.6rem",paddingBottom:"0.6rem"}} type='submit'>Submit</button>
-                <button style={{paddingInline:"1rem",paddingTop:"0.6rem",paddingBottom:"0.6rem"}} onClick={()=>setOpen(false)}>Close</button>
+                <button className='button-createBox' type='submit'>Submit</button>
+                <button className='button-createBox' onClick={()=>setOpen(false)}>Close</button>
                 </div>
                 </form>
             </div>
         </div>
         </div> }
         {newopen &&  <div>
-            <div  style={{ backgroundColor: "rgba(0,0,0,0.5)", position: "fixed",height: "100%", width: "100%", top: 0,left: 0, display: "flex" ,alignItems: "center",justifyContent: "center",overflow: "auto",zIndex: 99999}}>
-            modal
-            <div style={{marginTop:"4rem",width:"30%",backgroundColor:"#fff"}} >
+            <div   className='modal-create-box'>
+            <div style={{backgroundColor:"#fff"}} >
                 <form style={{padding:"2rem",display:"flex",flexDirection:"column"}} onSubmit={handleSubmitEdit}>
                 <input type="text" value={newtitle}  onChange={(e)=>setNewTitle(e.target.value)} placeholder='title' />
-                <input type="text" value={newdesc} onChange={(e)=>setNewDesc(e.target.value)} placeholder='description' />
+                {/* <input type="text" value={newdesc} onChange={(e)=>setNewDesc(e.target.value)} placeholder='description' /> */}
+                <textarea style={{resize:"none"}} name="Text1" cols="40" rows="5" value={newdesc} onChange={(e)=>setNewDesc(e.target.value)} placeholder='description' ></textarea>
                 <div style={{display:"flex",gap:"10px",marginTop:"3rem"}}>
-                <button style={{paddingInline:"1rem",paddingTop:"0.6rem",paddingBottom:"0.6rem"}} type='submit'>Submit</button>
-                <button style={{paddingInline:"1rem",paddingTop:"0.6rem",paddingBottom:"0.6rem"}} onClick={()=>setNewOpen(false)}>Close</button>
+                <button className='button-createBox'type='submit'>Submit</button>
+                <button className='button-createBox' onClick={()=>setNewOpen(false)}>Close</button>
                 </div>
                 </form>
             </div>

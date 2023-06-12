@@ -1,23 +1,101 @@
-.main-container{
+.main-containerBox{
     display: flex;
     align-items: center;
     flex-direction: column;
     justify-content: center;
-    /* background-color: aqua; */
-    margin-top: 10rem;
+    gap:10px;
+    margin-inline:20rem;
 }
-.button-create{
+
+@media only screen and (max-width: 1102px) {
+ .main-containerBox{
+  margin-inline:10rem;
+ }
+}
+@media only screen and (max-width: 758px) {
+ .main-containerBox{
+  margin-inline:6rem;
+ }
+}
+@media only screen and (max-width: 603px) {
+ .main-containerBox{
+  margin-inline:2rem;
+ }
+}
+@media only screen and (max-width: 375px) {
+ .main-containerBox{
+  margin-inline:0;
+ }
+}
+.button-createBox {
+  border-color: #3498db;
+  color: #fff;
+  box-shadow: 0 0 40px 40px  #3498db inset, 0 0 0 0  #3498db;
+  transition: all 150ms ease-in-out;
+
+  box-sizing: border-box;
+  appearance: none;
+  background-color: transparent;
+  border: 2px solid  #fff;
+  border-radius: 0.6em;
+  color:  #fff;
+  cursor: pointer;
+  display: flex;
+  align-self: center;
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 1;
+  margin: 20px;
+  padding: 10px 15px;
+  text-decoration: none;
+  text-align: center;
+  font-weight: 700;
+
+  
+ 
+}
+.button-createBox:hover {
+  box-shadow: 0 0 10px 0  #3498db inset, 0 0 10px 4px  #3498db;
+  color: #333;
+    outline: 0;
+}
+.button-createBox:focus{
+  color: #333;
+  outline: 0;
+}
+
+.modal-create-box{
+  background-color: rgba(0,0,0,0.5);
+  position: fixed;
+  min-height: 100%;
+  min-width: 100%;
+  top: 0;
+  left: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: auto;
+  z-index: 99999;
+}
+
+/* .button-createBox{
     padding-inline: 2rem;
     padding-top: 1rem;
     padding-bottom: 1rem;
     background-color: #f2f2f2;
-}
+} */
 
 table {
     border-collapse: collapse;
     min-width: 100%;
+    /* width: 100%; */
+    /* table-layout: fixed; */
+   
   }
-  
+ thead{
+  background-color: #666;
+  color:#fff;
+ }
   th, td {
     text-align: left;
     padding: 8px;
@@ -25,7 +103,7 @@ table {
   
   tr:nth-child(even) {background-color: #f2f2f2;}
 
-  .container{
+  .containerBox{
     display: flex;
     justify-content: center;
   }
